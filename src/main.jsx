@@ -1,6 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+  import { ToastContainer, toast } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
 import './index.css'
 import MainLayout from './components/MainLayout.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
@@ -11,6 +13,7 @@ import GameWatchList from './components/outlets/watchList/GameWatchList.jsx';
 import MyReviews from './components/outlets/reviewsRoute/MyReviews.jsx';
 import Login from './components/outlets/AuthRoute/Login.jsx';
 import Resister from './components/outlets/AuthRoute/Resister.jsx';
+import AuthProvider from './provider/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +55,20 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={true}
+        draggable={true}
+        pauseOnHover={true}
+        theme="colored"
+      />
+    </AuthProvider>
   </StrictMode>
 );

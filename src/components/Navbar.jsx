@@ -68,9 +68,9 @@ const Navbar = () => {
               <button>
                 <NavLink to={"/login"}>Login</NavLink>
               </button>
-              <button className="btn btn-neutral">
-                <NavLink to={"/resister"}>Resister</NavLink>
-              </button>
+              <NavLink to={"/resister"}>
+                <button className="btn btn-neutral font-bold">Resister</button>
+              </NavLink>
             </div>
           </div>
         </div>
