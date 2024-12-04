@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Resister = () => {
   const { createUser, signInWithGoogle } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   // Regular expression:
@@ -99,8 +101,7 @@ const Resister = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  // type={showPassword ? "text" : "password"}
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="New Password"
                   className="input input-bordered "
@@ -125,7 +126,7 @@ const Resister = () => {
                 <p>
                   Already have an account ?{" "}
                   <NavLink
-                    className="text-lg font-bold text-[#ae2487]"
+                    className="text-lg font-bold text-[#7b1a5f]"
                     to={"/login"}
                   >
                     Login
@@ -133,17 +134,12 @@ const Resister = () => {
                 </p>
               </div>
             </form>
-            {/* <button
+            <button
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute left-64 top-[345px]"
               >
                 {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
               </button>
-              {errorMessage && (
-                <p className=" text-center font-semibold text-red-600 mb-2">
-                  {errorMessage}
-                </p>
-              )} */}
           </div>
         </div>
       </div>
