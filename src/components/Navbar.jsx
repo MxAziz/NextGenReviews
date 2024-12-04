@@ -1,7 +1,24 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
+
+  const { user, signOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    signOutUser()
+      .then(() => {
+        console.log("sign out successful");
+        toast.info("Sign out successful");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log("ERROR:", error);
+      });
+  };
+
 
   // navbar links
   const links = (
@@ -56,7 +73,8 @@ const Navbar = () => {
                 {links}
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl font-bold">CHILL GAMER</a>
+            <a className="btn btn-ghost text-xl font-bold"
+            > <img className=' size-10 hidden md:block rounded-full' src="/logo.jpg" alt="" /> CHILL GAMER</a>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -64,14 +82,35 @@ const Navbar = () => {
 
           {/* authentication condition */}
           <div className="navbar-end ">
-            <div className=" space-x-4">
-              <button>
-                <NavLink to={"/login"}>Login</NavLink>
-              </button>
-              <NavLink to={"/resister"}>
-                <button className="btn btn-neutral font-bold">Resister</button>
-              </NavLink>
-            </div>
+            {user ? (
+              <>
+                <div className="flex justify-center items-center gap-2">
+                  <div className="avatar online">
+                    <div className=" size-12 rounded-full">
+                      <img  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                    </div>
+                  </div>
+                  <div className="">
+                    <a onClick={handleLogOut} className="btn font-bold ">
+                      Log Out
+                    </a>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className=" space-x-4">
+                  <button>
+                    <NavLink to={"/login"}>Login</NavLink>
+                  </button>
+                  <NavLink to={"/resister"}>
+                    <button className="btn btn-neutral font-bold">
+                      Resister
+                    </button>
+                  </NavLink>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
