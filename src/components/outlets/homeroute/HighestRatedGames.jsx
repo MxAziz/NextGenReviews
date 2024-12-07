@@ -36,7 +36,7 @@ const HighestRatedGames = () => {
             <p className="text-gray-700">Rating: {game.rating}</p>
             <p className="text-gray-500 text-sm">{game.publish} Published</p>
             <button
-              onClick={() => navigate(`/games/${game._id}`)}
+              onClick={() => navigate(`/review/${game._id}`)}
               className="mt-4 px-4 py-2 bg-[#23272F] text-white rounded hover:bg-blue-600"
             >
               Explore Details

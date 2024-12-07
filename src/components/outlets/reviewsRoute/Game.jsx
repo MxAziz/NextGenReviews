@@ -1,7 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Game = ({ game }) => {
-  const { email, name, genre, publish, rating, description, title, cover } =
+
+    const navigate = useNavigate();
+
+  const {_id, email, name, genre, publish, rating, description, title, cover } =
     game;
 
   return (
@@ -20,14 +24,17 @@ const Game = ({ game }) => {
             <p className=" font-bold  text-end">Rating: {rating}</p>
           </div>
           <div className="flex justify-between items-center ">
-            <p className=" text-xl ">Publishing year: {publish}</p>
+            <p className=" text-xl ">Published year: {publish}</p>
             <p className=" font-bold  text-end badge text-orange-400">
               {" "}
               {genre}
             </p>
           </div>
           <div className="card-actions justify-center mt-4">
-            <button className="btn btn-wide btn-neutral">
+            <button
+              onClick={() => navigate(`/review/${game._id}`)}
+              className="btn btn-wide btn-neutral"
+            >
               Explore Details
             </button>
           </div>

@@ -37,7 +37,7 @@ const AddReview = () => {
      console.log('post response', data);
        if (data.insertedId) {
          toast.success('Games added successfully')
-        //  form.reset();
+         form.reset();
       }
    })
 
@@ -84,7 +84,7 @@ const AddReview = () => {
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text text-base text-white font-bold">
-                        Game Title/ Name
+                        Game Name/Title
                       </span>
                     </label>
                     <input

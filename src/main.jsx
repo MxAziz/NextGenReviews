@@ -14,6 +14,7 @@ import MyReviews from './components/outlets/reviewsRoute/MyReviews.jsx';
 import Login from './components/outlets/AuthRoute/Login.jsx';
 import Resister from './components/outlets/AuthRoute/Resister.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
+import ReviewDetails from './components/outlets/reviewsRoute/ReviewDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
       {
         path: "/myReviews",
         element: <MyReviews></MyReviews>,
+      },
+      {
+        path: "/review/:id",
+        element: <ReviewDetails></ReviewDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/games/${params.id}`),
       },
       {
         path: "/gameWatchList",
