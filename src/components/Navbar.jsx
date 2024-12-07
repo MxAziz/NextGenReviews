@@ -43,15 +43,19 @@ const Navbar = () => {
       <li>
         <NavLink to={"/allReviews"}>All Reviews</NavLink>
       </li>
-      <li>
-        <NavLink to={"/addReview"}>Add Review</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/myReviews"}>My Reviews</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/gameWatchList"}>Game WatchList</NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to={"/addReview"}>Add Review</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/myReviews"}>My Reviews</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/gameWatchList"}>Game WatchList</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -87,7 +91,7 @@ const Navbar = () => {
                 {links}
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl font-bold">
+            <a className="btn btn-ghost md:text-xl font-bold">
               {" "}
               <img
                 className=" size-10 hidden md:block rounded-full"
@@ -135,18 +139,30 @@ const Navbar = () => {
             {user ? (
               <>
                 <div className="flex justify-center items-center gap-2">
-                  <div className="avatar online">
-                    <div className="size-12 rounded-full">
-                      <img
-                        src={
-                          user && user.photoURL
-                            ? user.photoURL
-                            : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                        }
-                        alt="User Avatar"
-                      />
+                  {/*  */}
+                  <div className="dropdown dropdown-hover">
+                    <div tabIndex={0} role="button" className=" m-1">
+                      <div className="avatar online">
+                        <div className="size-12 rounded-full">
+                          <img
+                            src={
+                              user && user.photoURL
+                                ? user.photoURL
+                                : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                            }
+                            alt="User Avatar"
+                          />
+                        </div>
+                      </div>
                     </div>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content menu bg-[#19202f] text-white font-bold rounded-box z-[1] w-52 p-2 shadow"
+                    >
+                      <h3>{user.displayName}</h3>
+                    </ul>
                   </div>
+                  {/*  */}
                   <div className="">
                     <a onClick={handleLogOut} className="btn font-bold ">
                       Log Out
