@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const AddReview = () => {
 
-   const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState("");
+  const { user } = useContext(AuthContext);
+
+
+
 
  const handleAddReview = (e) => {
    e.preventDefault();
 
+   const form = e.target;
    const formData = {
      cover: e.target.cover.value,
      title: e.target.title.value,
@@ -18,7 +25,22 @@ const AddReview = () => {
      email: e.target.email.value,
    };
 
-   console.log(formData);
+   fetch("http://localhost:5000/games", {
+     method: "POST",
+     headers: {
+       'content-type': 'application/json',
+     },
+     body: JSON.stringify(formData),
+   })
+   .then(res => res.json())
+     .then(data => {
+     console.log('post response', data);
+       if (data.insertedId) {
+         toast.success('Games added successfully')
+        //  form.reset();
+      }
+   })
+
  };
 
 
@@ -34,7 +56,10 @@ const AddReview = () => {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-2xl">
-            <h1 className=" text-4xl font-bold text-white mt-4 "> Add New Review</h1>
+            <h1 className=" text-4xl font-bold text-white mt-4 ">
+              {" "}
+              Add New Review
+            </h1>
             {/* form */}
             <div className="hero min-h-screen">
               <div className="card  w-full  shrink-0 shadow-2xl">
@@ -52,7 +77,7 @@ const AddReview = () => {
                       type="text"
                       name="cover"
                       placeholder="Cover image URL"
-                      className="input input-bordered dark:bg-gray-700"
+                      className="input input-bordered bg-gray-700"
                       required
                     />
                   </div>
@@ -66,7 +91,7 @@ const AddReview = () => {
                       type="text"
                       name="title"
                       placeholder="Game Name/Title"
-                      className="input input-bordered dark:bg-gray-700"
+                      className="input input-bordered bg-gray-700"
                       required
                     />
                   </div>
@@ -80,7 +105,7 @@ const AddReview = () => {
                       type="text"
                       name="description"
                       placeholder="Game Description"
-                      className="input input-bordered dark:bg-gray-700"
+                      className="input input-bordered bg-gray-700"
                       required
                     />
                   </div>
@@ -93,8 +118,11 @@ const AddReview = () => {
                     <input
                       type="number"
                       name="rating"
+                      min="1"
+                      max="10"
+                      step="0.1"
                       placeholder="Rating(e.g., 1-5 or 1-10)"
-                      className="input input-bordered dark:bg-gray-700"
+                      className="input input-bordered bg-gray-700"
                       required
                     />
                   </div>
@@ -108,27 +136,10 @@ const AddReview = () => {
                       type="number"
                       name="publish"
                       placeholder="Publishing year(Ex: 2021, 2024)"
-                      className="input input-bordered dark:bg-gray-700"
+                      className="input input-bordered bg-gray-700"
                       required
                     />
                   </div>
-                  {/* <div className="form-control">
-                    <label className="label">
-                      <span className="label-text text-base text-white font-bold">
-                        Genres{" "}
-                      </span>
-                    </label>
-                    <select
-                      id="countries"
-                      value={selectedValue}
-                      class="bg-gray-50 border h-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    >
-                      <option selected>Choose a Genre</option>
-                      <option value="option1">Action </option>
-                      <option value="option2">RPG </option>
-                      <option value="option3">Adventure</option>
-                    </select>
-                  </div> */}
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text text-base text-white font-bold">
@@ -136,10 +147,11 @@ const AddReview = () => {
                       </span>
                     </label>
                     <select
-                      id="countries"
+                      id="games"
                       value={selectedValue}
                       onChange={(e) => setSelectedValue(e.target.value)}
-                      className="bg-gray-50 border h-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className=" border h-12 border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      required
                     >
                       <option value="" disabled>
                         Choose a Genre
@@ -159,8 +171,9 @@ const AddReview = () => {
                     <input
                       type="text"
                       name="name"
-                      placeholder=""
-                      className="input input-bordered dark:bg-gray-700"
+                      value={user?.displayName || ""}
+                      readOnly
+                      className="input input-bordered bg-gray-700"
                     />
                   </div>
                   <div className="form-control">
@@ -171,13 +184,15 @@ const AddReview = () => {
                     </label>
                     <input
                       type="email"
-                      placeholder=""
-                      className="input input-bordered dark:bg-gray-700"
+                      name="email"
+                      value={user?.email || ""}
+                      readOnly
+                      className="input input-bordered bg-gray-700"
                     />
                   </div>
                   <div className="form-control mt-6">
                     <input
-                      className="btn btn-wide  dark:bg-gray-700 text-white hover:text-black "
+                      className="btn btn-wide  bg-gray-700 text-white hover:text-black "
                       type="submit"
                       value="Submit"
                     />

@@ -22,34 +22,35 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: '/',
-        element: <Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path: '/allReviews',
-        element: <AllReviews></AllReviews>
+        path: "/allReviews",
+        element: <AllReviews></AllReviews>,
+        loader: () => fetch("http://localhost:5000/games"),
       },
       {
-        path: '/addReview',
-        element: <AddReview></AddReview>
+        path: "/addReview",
+        element: <AddReview></AddReview>,
       },
       {
-        path: '/myReviews',
-        element: <MyReviews></MyReviews>
+        path: "/myReviews",
+        element: <MyReviews></MyReviews>,
       },
       {
-        path: '/gameWatchList',
-        element: <GameWatchList></GameWatchList>
+        path: "/gameWatchList",
+        element: <GameWatchList></GameWatchList>,
       },
       {
-        path: '/login',
-        element: <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path: '/resister',
-        element: <Resister></Resister>
+        path: "/resister",
+        element: <Resister></Resister>,
       },
-    ]
+    ],
   },
 ]);
 

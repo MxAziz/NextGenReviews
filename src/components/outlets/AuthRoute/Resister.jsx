@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { updateProfile } from "firebase/auth";
+import auth from "../../../firebase.config";
 
 const Resister = () => {
   const { createUser, signInWithGoogle } = useContext(AuthContext);
@@ -34,6 +36,17 @@ const Resister = () => {
         e.target.reset();
         navigate("/");
         toast.success("Sign Up is successful");
+
+        // update user profile
+        const profile = {
+          photoURL: photo,
+          displayName: name,
+        };
+        updateProfile(auth.currentUser, profile)
+          .then(() => {
+            console.log("user profile updated");
+          })
+          .catch((error) => console.log("user profile update error", error));
       })
       .catch((error) => {
         console.log(error.message);
