@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+
 
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
@@ -38,8 +40,8 @@ const MyReviews = () => {
   };
 
   return (
-    <div className="overflow-x-auto w-4/5 mx-auto">
-      <h2 className="text-2xl font-bold my-4">My Reviews</h2>
+    <div className="overflow-x-auto w-4/5 mx-auto mb-16 mt-6">
+      <h2 className="text-4xl mb-4 font-bold my-4 text-center">My Reviews</h2>
       <table className="table w-full">
         <thead>
           <tr>
@@ -57,17 +59,23 @@ const MyReviews = () => {
               <td>{review.rating}</td>
               <td>
                 <Link
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="Click to Edit Review!"
                   to={`/updateReview/${review._id}`}
                   className="btn btn-sm btn-primary mr-2"
                 >
                   Update
                 </Link>
                 <button
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="Click to Remove Review!"
                   onClick={() => handleDelete(review._id)}
                   className="btn btn-sm btn-error"
                 >
                   Delete
                 </button>
+                {/* React Tooltip */}
+                <ReactTooltip id="my-tooltip" place="top" effect="solid" />
               </td>
             </tr>
           ))}
