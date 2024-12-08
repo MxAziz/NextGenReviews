@@ -2,14 +2,15 @@ import React from 'react';
 import Banner from './Banner';
 import ExtraSection from './ExtraSection';
 import HighestRatedGames from './HighestRatedGames';
-import TooltipExample from './TooltipExample';
+import TypewriterExample from './TypewriterExample';
 
 const Home = () => {
     return (
       <div>
         <Banner></Banner>
 
-        <TooltipExample></TooltipExample>
+        {/* extra section and challenge part */}
+        <TypewriterExample></TypewriterExample>
         {/* Highest Rated Game section */}
         <HighestRatedGames></HighestRatedGames>
 

@@ -18,7 +18,6 @@ const MyReviews = () => {
     }
   }, [user?.email]);
 
-  // রিভিউ ডিলিট ফাংশন
   const handleDelete = (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete?");
     if (!confirmDelete) return;
