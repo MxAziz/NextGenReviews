@@ -25,7 +25,7 @@ const AddReview = () => {
      email: e.target.email.value,
    };
 
-   fetch("http://localhost:5000/games", {
+   fetch("https://chill-gamer-server-liart.vercel.app/games", {
      method: "POST",
      headers: {
        'content-type': 'application/json',

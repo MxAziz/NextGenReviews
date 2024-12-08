@@ -11,7 +11,7 @@ const MyReviews = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/myReviews/${user.email}`)
+      fetch(`https://chill-gamer-server-liart.vercel.app/myReviews/${user.email}`)
         .then((res) => res.json())
         .then((data) => setReviews(data))
         .catch((err) => console.error("Error fetching reviews:", err));
@@ -22,7 +22,7 @@ const MyReviews = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete?");
     if (!confirmDelete) return;
 
-    fetch(`http://localhost:5000/reviews/${id}`, {
+    fetch(`https://chill-gamer-server-liart.vercel.app/reviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -38,6 +38,8 @@ const MyReviews = () => {
       });
   };
 
+  console.log(reviews);
+
   return (
     <div className="overflow-x-auto w-4/5 mx-auto mb-16 mt-6">
       <h2 className="text-4xl mb-4 font-bold my-4 text-center">My Reviews</h2>
@@ -46,6 +48,7 @@ const MyReviews = () => {
           <tr>
             <th>#</th>
             <th>Title</th>
+            <th>Genre</th>
             <th>Rating</th>
             <th>Actions</th>
           </tr>
@@ -55,6 +58,7 @@ const MyReviews = () => {
             <tr key={review._id}>
               <th>{index + 1}</th>
               <td>{review.title}</td>
+              <td>{review.genre}</td>
               <td>{review.rating}</td>
               <td>
                 <Link

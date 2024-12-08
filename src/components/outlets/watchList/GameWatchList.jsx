@@ -8,7 +8,7 @@ const GameWatchList = () => {
 
       useEffect(() => {
         if (user?.email) {
-          fetch(`http://localhost:5000/watchList/${user.email}`)
+          fetch(`https://chill-gamer-server-liart.vercel.app/watchList/${user.email}`)
             .then((res) => res.json())
             .then((data) => setWatchList(data))
             .catch((error) =>

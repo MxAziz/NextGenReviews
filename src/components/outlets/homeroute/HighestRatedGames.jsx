@@ -6,7 +6,7 @@ const HighestRatedGames = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-      fetch("http://localhost:5000/highestRatedGames", {
+      fetch("https://chill-gamer-server-liart.vercel.app/highestRatedGames", {
           method: 'GET',
           headers: {
               'content-type': 'application/json',

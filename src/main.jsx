@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/allReviews",
         element: <AllReviews></AllReviews>,
-        loader: () => fetch("http://localhost:5000/games"),
+        loader: () => fetch("https://chill-gamer-server-liart.vercel.app/games"),
       },
       {
         path: "/addReview",
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/games/${params.id}`),
+          fetch(`https://chill-gamer-server-liart.vercel.app/games/${params.id}`),
       },
       {
         path: "/gameWatchList",

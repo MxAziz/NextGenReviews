@@ -14,7 +14,7 @@ const UpdateReview = () => {
 
   // Fetch the existing review data
   useEffect(() => {
-    fetch(`http://localhost:5000/games/${id}`)
+    fetch(`https://chill-gamer-server-liart.vercel.app/games/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setReview(data);
@@ -38,7 +38,7 @@ const UpdateReview = () => {
       email: e.target.email.value,
     };
 
-   fetch(`http://localhost:5000/reviews/${id}`, {
+   fetch(`https://chill-gamer-server-liart.vercel.app/reviews/${id}`, {
      method: "PUT",
      headers: {
        "Content-Type": "application/json",

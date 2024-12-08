@@ -9,7 +9,7 @@ const ReviewDetails = () => {
   const [game, setGame] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/games/${id}`)
+    fetch(`https://chill-gamer-server-liart.vercel.app/games/${id}`)
       .then((res) => res.json())
       .then((data) => setGame(data))
       .catch((err) => console.error("Error fetching game details:", err));
@@ -29,7 +29,7 @@ const ReviewDetails = () => {
         username: user.displayName,
       };
 
-      fetch("http://localhost:5000/watchList", {
+      fetch("https://chill-gamer-server-liart.vercel.app/watchList", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(watchListData),
