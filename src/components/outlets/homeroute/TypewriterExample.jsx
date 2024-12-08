@@ -6,7 +6,7 @@ const TypewriterExample = () => {
     <div
       style={{
         textAlign: "center",
-        marginTop: "50px",
+        // marginTop: "50px",
         backgroundColor: "#19202F",
         color: "white",
         padding: "40px",
