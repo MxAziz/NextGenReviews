@@ -38,7 +38,7 @@ const MyReviews = () => {
       });
   };
 
-  console.log(reviews);
+  // console.log(reviews);
 
   return (
     <div className="overflow-x-auto w-4/5 mx-auto mb-16 mt-6">

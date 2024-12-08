@@ -17,8 +17,6 @@ const GameWatchList = () => {
         }
       }, [user]);
 
-    console.log(watchList);
-    console.log(user);
 
 
 

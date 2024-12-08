@@ -34,7 +34,7 @@ const AddReview = () => {
    })
    .then(res => res.json())
      .then(data => {
-     console.log('post response', data);
+    //  console.log('post response', data);
        if (data.insertedId) {
          toast.success('Games added successfully')
          form.reset();

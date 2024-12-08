@@ -20,7 +20,7 @@ const Resister = () => {
     const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(name, photo, email, password);
+    // console.log(name, photo, email, password);
 
     // password validation
     if (!passwordReg.test(password)) {
@@ -44,12 +44,12 @@ const Resister = () => {
         };
         updateProfile(auth.currentUser, profile)
           .then(() => {
-            console.log("user profile updated");
+            // console.log("user profile updated");
           })
           .catch((error) => console.log("user profile update error", error));
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
         toast.error(error.message);
       });
   };
@@ -63,7 +63,7 @@ const Resister = () => {
         toast.success("Sign up with Google is successful");
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
         toast.error(error.message);
       });
   };
