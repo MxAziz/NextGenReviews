@@ -16,6 +16,7 @@ import Resister from './components/outlets/AuthRoute/Resister.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
 import ReviewDetails from './components/outlets/reviewsRoute/ReviewDetails.jsx';
 import PrivateRoute from './routes/PrivateRoute.jsx';
+import UpdateReview from './components/outlets/reviewsRoute/UpdateReview.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
             <MyReviews></MyReviews>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/updateReview/:id",
+        element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>
       },
       {
         path: "/review/:id",

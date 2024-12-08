@@ -141,7 +141,7 @@ const Navbar = () => {
                 <div className="flex justify-center items-center gap-2">
                   {/*  */}
                   <div className="dropdown dropdown-hover">
-                    <div tabIndex={0} role="button" className=" m-1">
+                    <div tabIndex={0} role="button" className="">
                       <div className="avatar online">
                         <div className="size-12 rounded-full">
                           <img
@@ -157,7 +157,7 @@ const Navbar = () => {
                     </div>
                     <ul
                       tabIndex={0}
-                      className="dropdown-content menu bg-[#19202f] text-white font-bold rounded-box z-[1] w-52 p-2 shadow"
+                      className="dropdown-content menu bg-[#19202f] text-white font-bold rounded-box z-[1] w-52 p-2 py-4 shadow"
                     >
                       <h3>{user.displayName}</h3>
                     </ul>
