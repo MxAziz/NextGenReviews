@@ -1,8 +1,11 @@
-# CHILL GAMER ! 🎮
+# NextGenReviews ! 🎮
 A modern and interactive game review platform where users can add, edit, and delete game reviews.
 
 ## Live Site URL
-[Visit Game Review Hub](https://your-live-site-url.com)
+[Visit Game Review Hub](https://chill-gamer-10.web.app/)
+
+## Project Requirements
+[Project requirements here](https://docs.google.com/document/d/1MLY5uKcQQfrVWuLN6xZk6uXFq6sPhmnSryaavn1nUQw/edit?usp=sharing)
 
 ## Features
 1. **User Authentication**:
