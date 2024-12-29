@@ -15,7 +15,7 @@ const Banner = () => {
             <h1 className=" text-2xl md:text-5xl font-bold">
               <Typewriter
                 words={[
-                  "Welcome to CHILL GAMER!",
+                  "Welcome to NextGenReviews!",
                   "Explore Exciting Reviews!",
                   "Enjoy the Latest Games!",
                 ]}

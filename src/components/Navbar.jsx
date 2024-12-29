@@ -85,7 +85,7 @@ const Navbar = () => {
                 src="/logo.jpg"
                 alt=""
               />{" "}
-              CHILL GAMER
+              NextGenReviews
             </a>
           </div>
           <div className="navbar-center hidden lg:flex">
