@@ -67,7 +67,11 @@ const ReviewDetails = () => {
           </div>
           <button
             onClick={handleAddToWatchList}
-            className="btn btn-neutral mt-4"
+            className="btn mt-4
+            bg-gradient-to-r from-blue-600 to-purple-600
+            text-white font-medium shadow-lg
+            hover:from-purple-600 hover:to-pink-600
+            transition-all duration-300"
           >
             Add to WatchList
           </button>

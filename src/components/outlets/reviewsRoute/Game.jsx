@@ -32,7 +32,11 @@ const Game = ({ game }) => {
           <div className="card-actions justify-center mt-4">
             <button
               onClick={() => navigate(`/review/${game._id}`)}
-              className="btn w-full btn-neutral"
+              className="btn w-full
+              bg-gradient-to-r from-blue-600 to-purple-600
+              text-white font-medium shadow-lg
+              hover:from-purple-600 hover:to-pink-600
+              transition-all duration-300"
             >
               Explore Details
             </button>
