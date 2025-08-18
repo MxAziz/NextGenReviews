@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Game = ({ game }) => {
@@ -33,7 +32,7 @@ const Game = ({ game }) => {
           <div className="card-actions justify-center mt-4">
             <button
               onClick={() => navigate(`/review/${game._id}`)}
-              className="btn btn-wide btn-neutral"
+              className="btn w-full btn-neutral"
             >
               Explore Details
             </button>
