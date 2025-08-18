@@ -9,7 +9,7 @@ const TypewriterExample = () => {
         // marginTop: "50px",
         backgroundColor: "#19202F",
         color: "white",
-        padding: "40px",
+        padding: "80px",
       }}
     >
       <h1 className=" text-4xl font-bold">

@@ -20,7 +20,7 @@ const HighestRatedGames = () => {
 
   return (
     <div>
-      <h2 className="text-4xl font-bold mb-4 text-center mt-10">Highest Rated Games</h2>
+      <h2 className="text-5xl font-bold mb-4 text-center mt-20">Highest Rated Games</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-11/12 mx-auto mb-20 mt-8">
         {games.map((game) => (
           <div
