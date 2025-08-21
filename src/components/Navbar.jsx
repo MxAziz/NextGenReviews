@@ -81,7 +81,7 @@ const Navbar = () => {
             <a className="btn btn-ghost md:text-xl font-bold">
               {" "}
               <img
-                className=" size-10 hidden md:block rounded-full"
+                className=" aspect-auto object-contain  size-10 hidden md:block rounded-full"
                 src="/logo.jpg"
                 alt=""
               />{" "}
